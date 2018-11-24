@@ -23,8 +23,9 @@ def opcao_quadro(nome, cor):
                       "| 3 - Listar Listas                 |\n"
                       "| 4 - Arquivar/Restaurar Lista      |\n"
                       "| 5 - Excluir Lista Arquivada       |\n"
-                      "| 6 - Adicionar Etiqueta            |\n"
+                      "| 6 - Renomear Etiqueta             |\n"
                       "| 7 - Acessar Lista                 |\n"
+                      "| 8 - Atividades(Logs) do Quadro    |\n"
                       "|                                   |\n"
                       "| 0 - Sair                          |\n"
                       "*-----------------------------------*\n"
@@ -34,19 +35,20 @@ def opcao_quadro(nome, cor):
 
 
 def opcao_lista(nome_lista, nome_quadro, cor_quadro):
-    opcao = int(input("\n*----------+++ LISTA +++-----------*\n"
-                      "|                                  |\n"
-                      "| 1 - Criar Cartão                 |\n"
-                      "| 2 - Mover Cartão                 |\n"
-                      "| 3 - Listar Cartões               |\n"
-                      "| 4 - Arquivar/Restaurar Cartão    |\n"
-                      "| 5 - Excluir Cartão Arquivado     |\n"
-                      "| 6 - Alterar Descrição de Cartão  |\n"
-                      "| 7 - Comentar no Cartão           |\n"
-                      "| 8 - Atividades(Logs)             |\n"
-                      "|                                  |\n"
-                      "| 0 - Sair                         |\n"
-                      "*----------------------------------*\n"
+    opcao = int(input("\n*-----------+++ LISTA +++------------*\n"
+                      "|                                    |\n"
+                      "| 1 - Criar Cartão                   |\n"
+                      "| 2 - Mover Cartão                   |\n"
+                      "| 3 - Listar Cartões                 |\n"
+                      "| 4 - Arquivar/Restaurar Cartão      |\n"
+                      "| 5 - Excluir Cartão Arquivado       |\n"
+                      "| 6 - Alterar Descrição de Cartão    |\n"
+                      "| 7 - Comentar no Cartão             |\n"
+                      "| 8 - Etiquetar Cartão               |\n"
+                      "| 8 - Atividades(Logs) de um Cartão  |\n"
+                      "|                                    |\n"
+                      "| 0 - Sair                           |\n"
+                      "*------------------------------------*\n"
                       "Lista '{}' do Quadro '{}{}{}'\n"
                       "Digite a Opção: ".format(nome_lista,
                                                 colorir(cor_quadro),
@@ -94,7 +96,12 @@ def pedir_nome_da_lista():
 
 def pedir_nome_do_cartao():
     nome = input("Digite o nome do cartão: ")
+    return nome
 
+
+def pedir_nome_da_etiqueta():
+    nome = input("Digite o nome da etiqueta: ")
+    return nome
 
 def pedir_indice():
     num_quadro = int(input("\nDigite o índice: "))
@@ -142,6 +149,10 @@ def mensagem_de_cartao_a_mover():
 
 def mensagem_de_quadro_a_receber_lista():
     print("\nQUADRO QUE RECEBERÁ A LISTA:")
+
+
+def mensagem_de_lista_a_receber_cartao():
+    print("\nLISTA QUE RECEBERÁ O CARTÃO:")
 
 
 def mensagem_de_nome_nao_autenticado():

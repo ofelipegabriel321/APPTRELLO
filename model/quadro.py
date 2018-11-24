@@ -33,24 +33,22 @@ class Quadro:
             return "*"
         return ""
 
-    def alterar_cor_de_etiqueta(self, indice_etiqueta, cor):
-        self.etiquetas[indice_etiqueta].alterar_cor(cor)
-
     def acessar_lista(self, indice_lista):
         return self.listas[indice_lista]
+
+    def acessar_etiqueta(self, indice_etiqueta):
+        return self.etiquetas[indice_etiqueta]
 
     def organizar_listas(self):
         listas_nao_arquivadas = []
         for lista in self.listas:
             if not lista.arquivado:
                 listas_nao_arquivadas.append(lista)
-        listas_nao_arquivadas.sort(key=lambda lista: lista.nome)
 
         listas_arquivadas = []
         for lista in self.listas:
             if lista.arquivado:
                 listas_arquivadas.append(lista)
-        listas_arquivadas.sort(key=lambda lista: lista.nome)
 
         self.listas = listas_nao_arquivadas + listas_arquivadas
 

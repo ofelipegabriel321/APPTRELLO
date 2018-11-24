@@ -5,5 +5,5 @@ class Etiqueta:
         self.cor = cor
         self.quadros = []
 
-    def alterar_cor(self, nova_cor):
-        self.cor = nova_cor
+    def renomear(self, novo_nome):
+        self.nome = novo_nome

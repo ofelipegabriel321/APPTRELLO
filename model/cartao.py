@@ -14,7 +14,7 @@ class Cartao:
 
     # def adicionar_comentario
 
-    def arquivar_desarquivar_card(self):
+    def arquivar_ou_restaurar(self):
         self.arquivado = not self.arquivado
 
     def adicionar_log(self, log):
