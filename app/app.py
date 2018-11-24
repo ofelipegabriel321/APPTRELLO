@@ -169,11 +169,13 @@ def menu_lista(lista, quadro):
             cartao = lista.acessar_cartao(indice_cartao - 1)
 
             mensagem_de_titulo_de_lista("NOME: " + cartao.nome)
-            mensagem_de_titulo_de_lista("DESCRIÇÃO: " + str(cartao.descricao))
-            mensagem_de_titulo_de_lista("COMENTÁRIOS: " + "\n".join(cartao.comentarios))
-            mensagem_de_titulo_de_lista("ETIQUETAS: " + "\n".join([etiqueta.nome for etiqueta in cartao.etiquetas]))
-            mensagem_de_titulo_de_lista("ARQUIVADO: " + cartao.arquivado)
-            mensagem_de_titulo_de_lista("LOGS: " + "\n".join(cartao))
+            mensagem_de_titulo_de_lista("DESCRIÇÃO: " + cartao.descricao)
+            mensagem_de_titulo_de_lista("COMENTÁRIOS: " + "\n\n".join(cartao.comentarios))
+            mensagem_de_titulo_de_lista("ETIQUETAS: " + "\n".join([colorir(etiqueta.cor) +
+                                                                   etiqueta.nome +
+                                                                   colorir("cor padrao")
+                                                                   for etiqueta in cartao.etiquetas]))
+            mensagem_de_titulo_de_lista("LOGS: " + "\n".join(cartao.logs))
             pass
 
         continuar_menu()
