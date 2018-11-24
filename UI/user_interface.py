@@ -1,5 +1,6 @@
 from funcionalidades import colorir
 
+
 def opcao_quadro_controller():
     opcao = int(input("\n*---------+++ QUADRO CONTROLLER +++----------*\n"
                       "|                                            |\n"
@@ -35,20 +36,20 @@ def opcao_quadro(nome, cor):
 
 
 def opcao_lista(nome_lista, nome_quadro, cor_quadro):
-    opcao = int(input("\n*-----------+++ LISTA +++------------*\n"
-                      "|                                    |\n"
-                      "| 1 - Criar Cartão                   |\n"
-                      "| 2 - Mover Cartão                   |\n"
-                      "| 3 - Listar Cartões                 |\n"
-                      "| 4 - Arquivar/Restaurar Cartão      |\n"
-                      "| 5 - Excluir Cartão Arquivado       |\n"
-                      "| 6 - Alterar Descrição de Cartão    |\n"
-                      "| 7 - Comentar no Cartão             |\n"
-                      "| 8 - Etiquetar Cartão               |\n"
-                      "| 8 - Atividades(Logs) de um Cartão  |\n"
-                      "|                                    |\n"
-                      "| 0 - Sair                           |\n"
-                      "*------------------------------------*\n"
+    opcao = int(input("\n*------------+++ LISTA +++-------------*\n"
+                      "|                                      |\n"
+                      "| 1 - Criar Cartão                     |\n"
+                      "| 2 - Mover Cartão                     |\n"
+                      "| 3 - Listar Cartões                   |\n"
+                      "| 4 - Arquivar/Restaurar Cartão        |\n"
+                      "| 5 - Excluir Cartão Arquivado         |\n"
+                      "| 6 - Alterar Descrição de Cartão      |\n"
+                      "| 7 - Comentar em um Cartão            |\n"
+                      "| 8 - Adicionar/Remover Etiqueta       |\n"
+                      "| 9 - Ver as Informações de um Cartão  |\n"
+                      "|                                      |\n"
+                      "| 0 - Sair                             |\n"
+                      "*--------------------------------------*\n"
                       "Lista '{}' do Quadro '{}{}{}'\n"
                       "Digite a Opção: ".format(nome_lista,
                                                 colorir(cor_quadro),
@@ -102,6 +103,17 @@ def pedir_nome_do_cartao():
 def pedir_nome_da_etiqueta():
     nome = input("Digite o nome da etiqueta: ")
     return nome
+
+
+def pedir_descricao():
+    descricao = input("Digite a descrição: ")
+    return descricao
+
+
+def pedir_comentario():
+    comentario = input("Digite o comentário: ")
+    return comentario
+
 
 def pedir_indice():
     num_quadro = int(input("\nDigite o índice: "))
@@ -177,3 +189,7 @@ def mensagem_de_saida():
 
 def imprimir_item(indice, item):
     print("{} - {}".format(indice, item))
+
+
+def imprimir_logs(logs):
+    print("\n\n".join(logs))

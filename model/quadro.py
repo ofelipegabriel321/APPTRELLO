@@ -2,11 +2,13 @@ from lista import Lista
 from etiqueta import Etiqueta
 from user_interface import *
 
+
 class Quadro:
     def __init__(self, nome, cor):
         self.nome = nome
         self.cor = cor
         self.listas = []
+        self.logs = []
         self.etiquetas = [Etiqueta("-", "verde"),
                           Etiqueta("-", "amarelo"),
                           Etiqueta("-", "vermelho"),
@@ -15,12 +17,15 @@ class Quadro:
                           Etiqueta("-", "cor padrao")]
         self.favorito = False
 
-    def adicionar_lista(self, nome): # OK #
+    def adicionar_lista(self, nome):
         lista = Lista(nome)
         self.listas.append(lista)
 
     def adicionar_lista_criada(self, lista):
         self.listas.append(lista)
+
+    def adicionar_log(self, log):
+        self.logs.append(log)
 
     def remover_lista(self, lista):
         self.listas.remove(lista)

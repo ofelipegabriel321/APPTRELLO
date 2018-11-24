@@ -1,13 +1,14 @@
 from cartao import Cartao
 from user_interface import *
 
+
 class Lista:
     def __init__(self, nome):
         self.nome = nome
         self.arquivado = False
         self.cartoes = []
 
-    def adicionar_cartao(self, nome): # OK #
+    def adicionar_cartao(self, nome):
         cartao = Cartao(nome)
         self.cartoes.append(cartao)
 
