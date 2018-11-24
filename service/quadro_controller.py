@@ -6,7 +6,7 @@ class QuadroController:
     def __init__(self):
         self.quadros = []
 
-    def adicionar_quadro(self, nome, cor): # OK #
+    def adicionar_quadro(self, nome, cor):
         quadro = Quadro(nome, cor)
         self.quadros.append(quadro)
 
@@ -38,15 +38,3 @@ class QuadroController:
 
     def indice_existe(self, indice_quadro):
         return 1 <= indice_quadro <= len(self.quadros)
-
-
-
-
-"""
-def main():
-    trello = QuadroController
-    
-
-if __name__ == '__main__':
-    main()
-"""

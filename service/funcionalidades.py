@@ -21,21 +21,3 @@ def transformar_numero_de_cor_em_nome_cor(numero_de_cor):
                                        5: "azul",
                                        6: "cor padrao"}
     return numeros_de_cor_para_nome_de_cor[numero_de_cor]
-
-"""
-def mover_item_de_lista(lista, posicao_atual, nova_posicao):
-    item_transferido = lista[posicao_atual]
-    if posicao_atual > nova_posicao:
-        posicao = posicao_atual
-        while posicao > nova_posicao:
-            lista[posicao] = lista[posicao - 1]
-            posicao -= 1
-        lista[nova_posicao] = item_transferido
-    elif posicao_atual < nova_posicao:
-        posicao = posicao_atual
-        while posicao < nova_posicao:
-            lista[posicao] = lista[posicao + 1]
-            posicao += 1
-        lista[nova_posicao] = item_transferido
-"""
-
