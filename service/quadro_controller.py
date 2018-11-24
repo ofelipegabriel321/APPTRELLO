@@ -2,7 +2,7 @@ from user_interface import *
 from funcionalidades import *
 from quadro import Quadro
 from lista import Lista
-from card import Card
+from cartao import Cartao
 
 
 class QuadroController:

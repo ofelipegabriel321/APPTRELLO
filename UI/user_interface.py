@@ -92,6 +92,10 @@ def pedir_nome_da_lista():
     return nome
 
 
+def pedir_nome_do_cartao():
+    nome = input("Digite o nome do cartão: ")
+
+
 def pedir_indice():
     num_quadro = int(input("\nDigite o índice: "))
     return num_quadro
@@ -130,6 +134,10 @@ def mensagem_de_titulo_de_lista(titulo):
 
 def mensagem_de_lista_a_mover():
     print("\nLISTA QUE SERÁ MOVIDA:")
+
+
+def mensagem_de_cartao_a_mover():
+    print("\nCARTÃO QUE SERÁ MOVIDO:")
 
 
 def mensagem_de_quadro_a_receber_lista():

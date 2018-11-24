@@ -12,6 +12,39 @@ def menu_lista(lista, quadro):
         if opcao == 0:
             mensagem_de_saida()
             break
+        elif opcao == 1:  #Criar Cartão
+            nome = pedir_nome_do_cartao()
+            lista.adicionar_cartao(nome)
+            mensagem_de_lista_criada()
+        elif opcao == 2:  # Mover Cartão
+            while True:
+                lista.organizar_cartoes
+                lista.listar_cartoes
+                mensagem_de_cartao_a_mover()
+                indice_cartao = pedir_indice()
+                if not lista.indice_de_cartao_existe(indice_cartao):
+                    mensagem_de_indice_nao_autenticado()
+                    continue
+                ####
+                lista = quadro.acessar_lista(indice_cartao - 1)
+
+                quadro_controller.organizar_quadros()
+                quadro_controller.listar_quadros()
+                mensagem_de_quadro_a_receber_lista()
+                indice_quadro = pedir_indice()
+                if not quadro_controller.indice_existe(indice_quadro):
+                    mensagem_de_indice_nao_autenticado()
+                    continue
+                quadro_recipiente = quadro_controller.acessar_quadro(indice_quadro - 1)
+
+                quadro.remover_lista(lista)
+                quadro_recipiente.adicionar_lista_criada(lista)
+
+                break
+        elif opcao == 3:  # Listar Cartões
+            pass
+        elif opcao == 4:  # Arquivar/Restaurar Cartão
+            pass
 
 
 def menu_quadro(quadro):
