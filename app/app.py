@@ -17,7 +17,12 @@ def menu_lista(lista, quadro):
         elif opcao == 1:
             nome = pedir_nome_do_cartao()
             lista.adicionar_cartao(nome)
-            mensagem_de_lista_criada()
+            mensagem_de_cartao_criado()
+            cartao = lista.acessar_cartao(-1)
+            log = "Adicionou o cartão '{}' à lista '{}'".format(cartao.nome,
+                                                                lista.nome)
+            cartao.adicionar_log(log)
+            quadro.adicionar_log(log)
 
         elif opcao == 2:
             while True:
@@ -42,6 +47,13 @@ def menu_lista(lista, quadro):
                 lista.remover_cartao(cartao)
                 lista_recipiente.adicionar_cartao_criado(cartao)
 
+                log = "Moveu o cartão '{}' da lista '{}' para a lista '{}'".format(cartao.nome,
+                                                                                   lista.nome,
+                                                                                   lista_recipiente.nome)
+
+                cartao.adicionar_log(log)
+                quadro.adicionar_log(log)
+
                 break
 
         elif opcao == 3:
@@ -60,6 +72,17 @@ def menu_lista(lista, quadro):
                 cartao = lista.acessar_cartao(indice_cartao - 1)
                 cartao.arquivar_ou_restaurar()
 
+                if cartao.arquivado:
+                    mensagem = "Arquivou"
+                else:
+                    mensagem = "Restaurou"
+
+                log = "{} cartão '{}' na lista '{}'".format(mensagem,
+                                                            cartao.nome,
+                                                            lista.nome)
+                cartao.adicionar_log(log)
+                quadro.adicionar_log(log)
+
                 break
 
         elif opcao == 5:
@@ -72,6 +95,12 @@ def menu_lista(lista, quadro):
                     continue
                 cartao = lista.acessar_cartao(indice_cartao - 1)
                 lista.remover_cartao(cartao)
+
+                log = "Excluiu o cartão '{}' na lista '{}'".format(cartao.nome,
+                                                                   lista.nome)
+
+                cartao.adicionar_log(log)
+                quadro.adicionar_log(log)
 
                 break
 
@@ -100,6 +129,14 @@ def menu_lista(lista, quadro):
                 cartao = lista.acessar_cartao(indice_cartao - 1)
                 comentario = pedir_comentario()
                 cartao.adicionar_comentario(comentario)
+
+                log = "Comentário '{}' no cartão '{}' na lista '{}'".format(comentario,
+                                                                            cartao.nome,
+                                                                            lista.nome)
+
+                cartao.adicionar_log(log)
+                quadro.adicionar_log(log)
+
                 break
 
         elif opcao == 8:
@@ -122,7 +159,7 @@ def menu_lista(lista, quadro):
 
                 break
 
-        elif opcao == 9:  # Ver as Informações de um Cartão
+        elif opcao == 9:
             lista.organizar_cartoes()
             lista.listar_cartoes()
             indice_cartao = pedir_indice()
@@ -132,7 +169,7 @@ def menu_lista(lista, quadro):
             cartao = lista.acessar_cartao(indice_cartao - 1)
 
             mensagem_de_titulo_de_lista("NOME: " + cartao.nome)
-            mensagem_de_titulo_de_lista("DESCRIÇÃO: " + cartao.descricao)
+            mensagem_de_titulo_de_lista("DESCRIÇÃO: " + str(cartao.descricao))
             mensagem_de_titulo_de_lista("COMENTÁRIOS: " + "\n".join(cartao.comentarios))
             mensagem_de_titulo_de_lista("ETIQUETAS: " + "\n".join([etiqueta.nome for etiqueta in cartao.etiquetas]))
             mensagem_de_titulo_de_lista("ARQUIVADO: " + cartao.arquivado)
@@ -143,7 +180,6 @@ def menu_lista(lista, quadro):
 
 
 def menu_quadro(quadro):
-    quadro.adicionar_log("Esse Quadro foi criado")
     while True:
         opcao = opcao_quadro(quadro.nome, quadro.cor)
 
@@ -156,7 +192,7 @@ def menu_quadro(quadro):
             quadro.adicionar_lista(nome)
             mensagem_de_lista_criada()
 
-            quadro.adicionar_log("Adicionou {} a este quadro".format(nome))
+            quadro.adicionar_log("Adicionou a lista '{}' a este quadro".format(nome))
 
         elif opcao == 2:
             while True:
@@ -180,7 +216,7 @@ def menu_quadro(quadro):
 
                 quadro.remover_lista(lista)
                 quadro_recipiente.adicionar_lista_criada(lista)
-                log = "Moveu lista {} do quadro {}{}{} para o quadro {}{}{}".format(
+                log = "Moveu lista '{}' do quadro '{}{}{}' para o quadro '{}{}{}'".format(
                     lista.nome,
                     colorir(quadro.cor),
                     quadro.nome,
@@ -214,26 +250,10 @@ def menu_quadro(quadro):
             else:
                 mensagem = "Restaurou"
 
-            log = "{} lista {}".format(mensagem, lista.nome)
+            log = "{} lista '{}'".format(mensagem, lista.nome)
             quadro.adicionar_log(log)
 
-        elif opcao == 5:  # Excluir Lista Arquivada
-            while True:
-                quadro.organizar_listas_arquivadas()
-                quadro.listar_listas_arquivadas()
-                indice_lista = pedir_indice()
-                if not quadro.indice_de_lista_existe(indice_lista):
-                    mensagem_de_indice_nao_autenticado()
-                    continue
-                lista = quadro.acessar_lista(indice_lista - 1)
-                quadro.remover_lista(lista)
-
-                break
-
-            log = "Excluiu lista {}".format(lista.nome)
-            quadro.adicionar_log(log)
-
-        elif opcao == 6:  # Renomear Etiqueta
+        elif opcao == 5:
             while True:
                 quadro.listar_etiquetas()
                 indice_etiqueta = pedir_indice()
@@ -245,7 +265,7 @@ def menu_quadro(quadro):
                 etiqueta.renomear(novo_nome)
                 break
 
-        elif opcao == 7:  # Acessar Lista
+        elif opcao == 6:
             while True:
                 quadro.listar_listas()
                 indice_lista = pedir_indice()
@@ -256,7 +276,7 @@ def menu_quadro(quadro):
                 menu_lista(lista, quadro)
                 break
 
-        elif opcao == 8:
+        elif opcao == 7:
             mensagem_de_titulo_de_lista("LOGS:")
             imprimir_logs(quadro.logs)
 
@@ -281,6 +301,10 @@ def menu_quadro_controller(quadro_controller):
 
                 break
             quadro_controller.adicionar_quadro(nome, cor)
+
+            quadro = quadro_controller.acessar_quadro(-1)
+            quadro.adicionar_log("Esse Quadro foi criado")
+
             mensagem_de_quadro_criado()
 
         elif opcao == 2:

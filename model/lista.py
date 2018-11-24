@@ -12,11 +12,11 @@ class Lista:
         cartao = Cartao(nome)
         self.cartoes.append(cartao)
 
-    def adicionar_cartao_criado(self, cartao):
-        self.cartoes.append(cartao)
-
     def remover_cartao(self, cartao):
         self.cartoes.remove(cartao)
+
+    def adicionar_cartao_criado(self, cartao):
+        self.cartoes.append(cartao)
 
     def arquivar_ou_restaurar(self):
         self.arquivado = not self.arquivado
@@ -54,7 +54,7 @@ class Lista:
         mensagem_de_titulo_de_lista("CARTÕES:")
         for indice, cartao in enumerate(self.cartoes):
             if not cartao.arquivado:
-                linha_de_lista(indice + 1, cartao)
+                linha_de_cartao(indice + 1, cartao)
 
     def listar_cartoes_arquivados(self):
         mensagem_de_titulo_de_lista("CARTÕES ARQUIVADOS:")

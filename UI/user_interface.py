@@ -23,10 +23,9 @@ def opcao_quadro(nome, cor):
                       "| 2 - Mover Lista                   |\n"
                       "| 3 - Listar Listas                 |\n"
                       "| 4 - Arquivar/Restaurar Lista      |\n"
-                      "| 5 - Excluir Lista Arquivada       |\n"
-                      "| 6 - Renomear Etiqueta             |\n"
-                      "| 7 - Acessar Lista                 |\n"
-                      "| 8 - Atividades(Logs) do Quadro    |\n"
+                      "| 5 - Renomear Etiqueta             |\n"
+                      "| 6 - Acessar Lista                 |\n"
+                      "| 7 - Atividades(Logs) do Quadro    |\n"
                       "|                                   |\n"
                       "| 0 - Sair                          |\n"
                       "*-----------------------------------*\n"
@@ -139,12 +138,25 @@ def linha_de_etiqueta(indice, etiqueta):
                                  colorir("cor padrao")))
 
 
+def linha_de_cartao(indice, cartao):
+    print("{} - {} (etiquetas: {})".format(indice,
+                                           cartao.nome,
+                                           " ".join([colorir(etiqueta.cor) +
+                                                     etiqueta.nome +
+                                                     colorir("cor padrao")
+                                                     for etiqueta in cartao.etiquetas])))
+
+
 def mensagem_de_quadro_criado():
     print("QUADRO CRIADO COM SUCESSO!")
 
 
 def mensagem_de_lista_criada():
     print("LISTA CRIADA COM SUCESSO!")
+
+
+def mensagem_de_cartao_criado():
+    print("CARTÃO CRIADO COM SUCESSO!")
 
 
 def mensagem_de_titulo_de_lista(titulo):
