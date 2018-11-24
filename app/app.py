@@ -175,7 +175,7 @@ def menu_lista(lista, quadro):
                                                                    etiqueta.nome +
                                                                    colorir("cor padrao")
                                                                    for etiqueta in cartao.etiquetas]))
-            mensagem_de_titulo_de_lista("LOGS: " + "\n".join(cartao.logs))
+            mensagem_de_titulo_de_lista("LOGS:\n" + "\n".join(cartao.logs))
             pass
 
         continuar_menu()
